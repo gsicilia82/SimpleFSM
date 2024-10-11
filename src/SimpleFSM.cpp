@@ -56,6 +56,7 @@ void SimpleFSM::reset() {
   is_finished = false;
   last_run = 0;
   last_transition = 0;
+  lastEventID = 0;
   setInitialState(inital_state);
   current_state = NULL;
   prev_state = NULL;
@@ -84,6 +85,7 @@ bool SimpleFSM::trigger(int event_id) {
   // Find the transition with the current state and given event
   for (int i = 0; i < num_standard; i++) {
     if (transitions[i].from == current_state && transitions[i].event_id == event_id) {
+      lastEventID = event_id;
       return _transitionTo(&(transitions[i]));
     }
   }

@@ -46,6 +46,7 @@ class SimpleFSM {
   State* getPreviousState() const;
   unsigned long lastTransitioned() const;
   String getDotDefinition();
+  int lastEventID;
 
  protected:
   int num_timed = 0;
