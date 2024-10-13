@@ -35,6 +35,7 @@ class SimpleFSM {
 
   bool trigger(int event_id);
   void run(int interval = 1000, CallbackFunction tick_cb = NULL);
+  bool initFSM();
   void reset();
 
   int getTransitionCount() const;
@@ -73,7 +74,6 @@ class SimpleFSM {
   bool _isTimeForRun(unsigned long now, int interval);
   void _handleTimedEvents(unsigned long now);
   
-  bool _initFSM();
   bool _transitionTo(AbstractTransition* transition);
   bool _changeToState(State* s, unsigned long now);
 

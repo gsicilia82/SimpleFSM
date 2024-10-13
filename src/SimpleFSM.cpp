@@ -81,7 +81,7 @@ void SimpleFSM::setInitialState(State* state) {
  */
 
 bool SimpleFSM::trigger(int event_id) {
-  if (!is_initialized) _initFSM();
+  if (!is_initialized) initFSM();
   // Find the transition with the current state and given event
   for (int i = 0; i < num_standard; i++) {
     if (transitions[i].from == current_state && transitions[i].event_id == event_id) {
@@ -277,7 +277,7 @@ bool SimpleFSM::isFinished() const {
 void SimpleFSM::run(int interval /* = 1000 */, CallbackFunction tick_cb /* = NULL */) {
   unsigned long now = millis();
   // is the machine set up?
-  if (!is_initialized) _initFSM();
+  if (!is_initialized) initFSM();
   // are we ok?
   if (current_state == NULL) return;
   // is it time?
@@ -325,7 +325,7 @@ void SimpleFSM::_handleTimedEvents(unsigned long now) {
 * Initialize the FSM.
 */
 
-bool SimpleFSM::_initFSM() {
+bool SimpleFSM::initFSM() {
   if (is_initialized) return false;
   is_initialized = true;
   if (inital_state == NULL) return false;
