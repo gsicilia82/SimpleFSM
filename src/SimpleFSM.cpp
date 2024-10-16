@@ -64,6 +64,7 @@ void SimpleFSM::reset() {
   for (int i = 0; i < num_timed; i++) {
     timed[i].reset();
   }
+  initFSM();
 }
 
 /////////////////////////////////////////////////////////////////
